@@ -52,14 +52,11 @@ def run_Ace():
 
 
 def start_assistant():
-    """Start the assistant when the button is pressed"""
     threading.Thread(target=take_command).start()
 
 root = Tk()
 root.title("Personal Assistant")
 root.geometry("300x200")
-
-# Add a button to start the assistant
 start_button = Button(root, text="Start Assistant", command=start_assistant)
 start_button.pack(pady=20)
 
