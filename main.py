@@ -4,7 +4,8 @@ import speech_recognition as sr
 import pyttsx3
 import pywhatkit
 import pyjokes
-
+from tkinter import *
+import threading
 
 listener = sr.Recognizer()
 engine = pyttsx3.init()
@@ -49,7 +50,17 @@ def run_Ace():
     else:
         talk('please say the command again.')
 
-while True:
-    run_Ace()
 
+def start_assistant():
+    """Start the assistant when the button is pressed"""
+    threading.Thread(target=take_command).start()
 
+root = Tk()
+root.title("Personal Assistant")
+root.geometry("300x200")
+
+# Add a button to start the assistant
+start_button = Button(root, text="Start Assistant", command=start_assistant)
+start_button.pack(pady=20)
+
+root.mainloop()
